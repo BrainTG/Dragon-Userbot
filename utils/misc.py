@@ -70,4 +70,4 @@ except git.exc.InvalidGitRepositoryError:
     gitrepo = git.Repo(".")
 
 commit_hash = gitrepo.head.commit.hexsha
-userbot_version = f"4.0.{leommit_hash}-BrainTG"
+userbot_version = f"4.0.{commit_hash}-BrainTG"
