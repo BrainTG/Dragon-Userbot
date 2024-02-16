@@ -2,29 +2,29 @@
         <img src="https://telegra.ph/file/97ba4adfdf5ac59a213d9.png" width="500" alt="Dragon-Userbot">
     </a>
     <br>
-    <b>Dragon-Userbot</b>
+    <b>BrainTG/Dragon-Userbot</b>
     <br>
     <b>Telegram userbot with the easiest installation</b>
     <br>
-    <a href='https://github.com/Dragon-Userbot/Dragon-Userbot#installation'>
+    <a href='https://github.com/BrainTG/Dragon-Userbot#installation'>
         Installation
     </a>
     •
-    <a href="https://github.com/Dragon-Userbot/Dragon-Userbot/releases">
+    <a href="https://github.com/BrainTG/Dragon-Userbot/releases">
         Releases
     </a>
     •
-    <a href="https://github.com/Dragon-Userbot/Dragon-Userbot#groups-and-support">
+    <a href="https://github.com/BrainTG/Dragon-Userbot#groups-and-support">
         Community
     </a>
     •
-    <a href='https://github.com/Dragon-Userbot/Dragon-Userbot#custom-modules'>
+    <a href='https://github.com/BrainTG/Dragon-Userbot#custom-modules'>
         Custom modules
     </a>
     <br>
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge" alt="Code style">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Dragon-Userbot/Dragon-Userbot?style=for-the-badge">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Dragon-Userbot/Dragon-Userbot?style=for-the-badge">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/BrainTG/Dragon-Userbot?style=for-the-badge">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/BrainTG/Dragon-Userbot?style=for-the-badge">
 </p>
 
 
@@ -37,7 +37,8 @@ So how does it work? It works in a very simple way, using the pyrogram library, 
 Using selfbot/userbot is against Telegram's Terms of Service, and you may get banned for using it if you're not careful.
 
 The developers are not responsible for any consequences you may encounter when using Dragon-Userbot. We are also not
-responsible for any damage to chat rooms caused by using this userbot.</p>
+responsible for any damage to chat rooms caused by using this userbot.
+BrainTG Dragon-Userbot is an improved dragon!</p>
 
 
 

@@ -1,4 +1,14 @@
-#  Dragon-Userbot - telegram userbot
+"""
+  _______            __       _______ _______ 
+ |   _   .----.---.-|__.-----|       |   _   |
+ |.  1   |   _|  _  |  |     |.|   | |.  |___|
+ |.  _   |__| |___._|__|__|__`-|.  |-|.  |   |
+ |:  1    \                    |:  | |:  1   |
+ |::.. .  /                    |::.| |::.. . |
+ `-------'                     `---' `-------'
+                                              
+"""
+# Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
 #  This program is free software: you can redistribute it and/or modify
@@ -35,12 +45,23 @@ python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 
 prefix = db.get("core.main", "prefix", ".")
 
+logo = """
+  _______            __       _______ _______ 
+ |   _   .----.---.-|__.-----|       |   _   |
+ |.  1   |   _|  _  |  |     |.|   | |.  |___|
+ |.  _   |__| |___._|__|__|__`-|.  |-|.  |   |
+ |:  1    \                    |:  | |:  1   |
+ |::.. .  /                    |::.| |::.. . |
+ `-------'                     `---' `-------'
+                                              
+"""
+
 try:
     gitrepo = git.Repo(".")
 except git.exc.InvalidGitRepositoryError:
     repo = git.Repo.init()
     origin = repo.create_remote(
-        "origin", "https://github.com/Dragon-Userbot/Dragon-Userbot"
+        "origin", "https://github.com/BrainTG/Dragon-Userbot"
     )
     origin.fetch()
     repo.create_head("master", origin.refs.master)
@@ -48,5 +69,5 @@ except git.exc.InvalidGitRepositoryError:
     repo.heads.master.checkout(True)
     gitrepo = git.Repo(".")
 
-commits_since_tag = list(gitrepo.iter_commits(f"{gitrepo.tags[-1].name}..HEAD"))
-userbot_version = f"4.0.{len(commits_since_tag)}"
+commit_hash = gitrepo.head.commit.hexsha
+userbot_version = f"4.0.{leommit_hash}-BrainTG"

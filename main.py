@@ -1,3 +1,13 @@
+"""
+  _______            __       _______ _______ 
+ |   _   .----.---.-|__.-----|       |   _   |
+ |.  1   |   _|  _  |  |     |.|   | |.  |___|
+ |.  _   |__| |___._|__|__|__`-|.  |-|.  |   |
+ |:  1    \                    |:  | |:  1   |
+ |::.. .  /                    |::.| |::.. . |
+ `-------'                     `---' `-------'
+                                              
+"""
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -27,7 +37,7 @@ from pyrogram.raw.functions.account import GetAuthorizations, DeleteAccount
 
 from utils import config
 from utils.db import db
-from utils.misc import gitrepo, userbot_version
+from utils.misc import gitrepo, userbot_version, logo
 from utils.scripts import restart, load_module
 
 script_path = os.path.dirname(os.path.realpath(__file__))
@@ -50,6 +60,7 @@ app = Client(
 
 
 async def main():
+    print(logo)
     logging.basicConfig(level=logging.INFO)
     DeleteAccount.__new__ = None
 

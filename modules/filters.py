@@ -1,3 +1,13 @@
+"""
+  _______            __       _______ _______ 
+ |   _   .----.---.-|__.-----|       |   _   |
+ |.  1   |   _|  _  |  |     |.|   | |.  |___|
+ |.  _   |__| |___._|__|__|__`-|.  |-|.  |   |
+ |:  1    \                    |:  | |:  1   |
+ |::.. .  /                    |::.| |::.. . |
+ `-------'                     `---' `-------'
+                                              
+"""
 from pyrogram import Client, filters, ContinuePropagation, errors
 from pyrogram.types import (
     Message,
