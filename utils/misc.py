@@ -69,5 +69,5 @@ except git.exc.InvalidGitRepositoryError:
     repo.heads.master.checkout(True)
     gitrepo = git.Repo(".")
 
-commit_hash = gitrepo.head.commit.hexsha
-userbot_version = f"4.0.{commit_hash[:7]}-BrainTG"
+commit_count = len(list(gitrepo.iter_commits('HEAD')))
+userbot_version = f"4.1.{commit_count}-BrainTG"
