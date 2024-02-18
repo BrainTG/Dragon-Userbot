@@ -34,6 +34,7 @@ from utils.scripts import (
     restart,
     format_exc,
     format_module_help,
+    format_small_module_help,
     load_module,
     unload_module,
 )
@@ -42,9 +43,41 @@ from utils.config import modules_repo_branch
 
 BASE_PATH = os.path.abspath(os.getcwd())
 
+@Client.on_message(filters.command(["sendmod", "sm", "ml"], prefix) & filters.me)
+async def sendmod(client: Client, message: Message):
+    if len(message.command) == 1:
+        return await message.edit("<b>Module name to send is not provided</b>")
+    
+    await message.edit("<b>Dispatching...</b>")
+    try:
+        module_name = message.command[1].lower()
+        if module_name in modules_help:
+            text = format_module_help(module_name)
+            if len(text) >= 1024:
+                text = format_small_module_help(module_name)
+            if os.path.isfile(f"modules/{module_name}.py"):
+                await client.send_document(
+                    message.chat.id, f"modules/{module_name}.py", caption=text
+                )
+            elif os.path.isfile(
+                f"modules/custom_modules/{module_name.lower()}.py"
+            ):
+                await client.send_document(
+                    message.chat.id,
+                    f"modules/custom_modules/{module_name}.py",
+                    caption=text,
+                )
+            await message.delete()
+        else:
+            await message.edit(f"<b>Module {module_name} not found!</b>")
+    except Exception as e:
+        await message.edit(format_exc(e))
+
+
 
 @Client.on_message(filters.command(["loadmod", "lm"], prefix) & filters.me)
 async def loadmod(client: Client, message: Message):
+
     if len(message.command) == 1:
         await message.edit("<b>Specify module to download</b>")
         return
@@ -190,4 +223,5 @@ modules_help["loader"] = {
     "unloadmod [module_name]*": "Delete module",
     "loadallmods": "Load all custom modules (use it at your own risk)",
     "updateallmods": "Update all loaded custom modules",
+    "sendmod [module_name]": "Send module to interlocutor"
 }
