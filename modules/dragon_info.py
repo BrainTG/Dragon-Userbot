@@ -37,9 +37,9 @@ from utils.misc import (
 )
 
 
-@Client.on_message(filters.command(["support", "repo"], prefix) & filters.me)
-async def support(_, message: Message):
-    devs = ["@john_ph0nk", "@fuccsoc2"]
+@Client.on_message(filters.command(["support", "repo", "info"], prefix) & filters.me)
+async def info(_, message: Message):
+    devs = ["@john_ph0nk", "@fuccsoc2", "BrainTG"]
     random.shuffle(devs)
 
     commands_count = float(
@@ -47,8 +47,8 @@ async def support(_, message: Message):
     )
 
     await message.edit(
-        f"<b>Dragon-Userbot\n\n"
-        "GitHub: <a href=https://github.com/Dragon-Userbot/Dragon-Userbot>Dragon-Userbot/Dragon-Userbot</a>\n"
+        f"<b>BrainTG/Dragon-Userbot\n\n"
+        "GitHub: <a href=https://github.com/BrainTG/Dragon-Userbot>BrainTG/Dragon-Userbot</a>\n"
         "Custom modules repository: <a href=https://github.com/Dragon-Userbot/custom_modules>"
         "Dragon-Userbot/custom_modules</a>\n"
         "License: <a href=https://github.com/Dragon-Userbot/Dragon-Userbot/blob/master/LICENSE>GNU GPL v3</a>\n\n"
@@ -101,7 +101,7 @@ async def version(client: Client, message: Message):
     )
 
 
-modules_help["support"] = {
-    "support": "Information about userbot",
+modules_help["dragon_info"] = {
+    "info": "Information about userbot",
     "version": "Check userbot version",
 }

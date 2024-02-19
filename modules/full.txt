@@ -9,13 +9,10 @@ notes
 ping
 prefix
 purge
-python
+eval
 say
-sendmod
 shell
 squotes
 stickers
-support
-switch
-url
+dragon_info
 user_info
