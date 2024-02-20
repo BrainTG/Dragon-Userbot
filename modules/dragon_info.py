@@ -39,7 +39,7 @@ from utils.misc import (
 
 @Client.on_message(filters.command(["support", "repo", "info"], prefix) & filters.me)
 async def info(_, message: Message):
-    devs = ["@john_ph0nk", "@fuccsoc2", "BrainTG"]
+    devs = ["@john_ph0nk", "@fuccsoc2", "@BTG_UB(BrainTG)"]
     random.shuffle(devs)
 
     commands_count = float(
@@ -52,7 +52,7 @@ async def info(_, message: Message):
         "Custom modules repository: <a href=https://github.com/Dragon-Userbot/custom_modules>"
         "Dragon-Userbot/custom_modules</a>\n"
         "License: <a href=https://github.com/Dragon-Userbot/Dragon-Userbot/blob/master/LICENSE>GNU GPL v3</a>\n\n"
-        "Channel: @Dragon_Userb0t\n"
+        "Channel: @BTG_UB\n"
         "Custom modules: @Dragon_Userb0t_modules\n"
         "Chat [RU]: @Dragon_Userb0t_chat\n"
         f"Main developers: {', '.join(devs)}\n\n"
@@ -68,7 +68,7 @@ async def version(client: Client, message: Message):
     changelog = ""
     ub_version = ".".join(userbot_version.split(".")[:2])
     async for m in client.search_messages(
-        "dRaGoN_uB_cHaNgElOg", query=ub_version + "."
+        "BTG_UB", query=ub_version + "."
     ):
         if ub_version in m.text:
             changelog = m.id
@@ -83,13 +83,8 @@ async def version(client: Client, message: Message):
     )
 
     await message.reply(
-        f"<b>Dragon Userbot version: {userbot_version}\n"
-        f"Changelog </b><i><a href=https://t.me/dRaGoN_uB_cHaNgElOg/{changelog}>in channel</a></i>.<b>\n"
-        f"Changelogs are written by </b><i>"
-        f"<a href=tg://user?id=318865588>\u2060</a>"
-        f"<a href=tg://user?id=293490416>♿️</a>"
-        f"<a href=https://t.me/acnxua>asphuy</a>"
-        f"<a href=https://t.me/artemjj2>♿️</a></i>\n\n"
+        f"<b>BrainTG Dragon-Userbot version: {userbot_version}\n"
+        f"Changelog </b><i><a href=https://t.me/BTG_UB/{changelog}>in channel</a></i>.<b>\n"
         + (
             f"<b>Branch: <a href={remote_url}/tree/{gitrepo.active_branch}>{gitrepo.active_branch}</a>\n"
             if gitrepo.active_branch != "master"

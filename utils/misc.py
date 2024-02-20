@@ -70,4 +70,4 @@ except git.exc.InvalidGitRepositoryError:
     gitrepo = git.Repo(".")
 
 commit_count = len(list(gitrepo.iter_commits('HEAD')))
-userbot_version = f"4.1.{commit_count}-BrainTG"
+userbot_version = f"4.2.{commit_count}-BrainTG"
