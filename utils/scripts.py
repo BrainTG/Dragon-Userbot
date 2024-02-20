@@ -298,3 +298,16 @@ def parse_meta_comments(code: str) -> Dict[str, str]:
         return {}
 
     return {groups[i]: groups[i + 1] for i in range(0, len(groups), 2)}
+
+# https://github.com/django/django/blob/stable/1.3.x/django/core/validators.py#L45
+def url_valid(url: str):
+    regex = re.compile(
+        r'^(?:http|https)://'
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|'
+        r'localhost|'
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+        r'(?::\d+)?'
+        r'(?:/?|[/?]\S+)$',
+        re.IGNORECASE
+    )
+    return bool(regex.match(url))

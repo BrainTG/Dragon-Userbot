@@ -37,6 +37,7 @@ from utils.scripts import (
     format_small_module_help,
     load_module,
     unload_module,
+    url_valid
 )
 from utils.misc import modules_help, prefix
 from utils.config import modules_repo_branch
@@ -83,15 +84,23 @@ async def loadmod(client: Client, message: Message):
         return
 
     module_name = message.command[1].lower()
-    resp = requests.get(
-        "https://raw.githubusercontent.com/Dragon-Userbot"
-        f"/custom_modules/{modules_repo_branch}/{module_name}.py"
-    )
+    if url_valid(module_name):
+        link = module_name
+        module_name = os.path.basename(link).split('.')[0]
+    else:
+        link = (
+            "https://raw.githubusercontent.com/Dragon-Userbot"
+            f"/custom_modules/{modules_repo_branch}/{module_name}.py"
+        )
+
+    resp = requests.get(link)
     if not resp.ok:
         await message.edit(
-            f"<b>Module <code>{module_name}</code> is not found</b>"
+            f"<b>Module <code>{module_name}</code> is not found or host down</b>"
         )
         return
+    
+
 
     if not os.path.exists(f"{BASE_PATH}/modules/custom_modules"):
         os.mkdir(f"{BASE_PATH}/modules/custom_modules")
