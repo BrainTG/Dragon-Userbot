@@ -38,14 +38,16 @@ async def exec_code(code, env={}):
         parsed = ast.parse(body)
         body = parsed.body[0].body
         insert_returns(body)
-        env = {'__import__': __import__, **env}
+        env = {"__import__": __import__, **env}
         exec(compile(parsed, filename="<ast>", mode="exec"), env)
         return await eval(f"{fn_name}()", env)
     except Exception as error:
         return error
 
 
-@Client.on_message(filters.command(["e", "exec", "py", "eval"], prefix) & filters.me)
+@Client.on_message(
+    filters.command(["e", "exec", "py", "eval"], prefix) & filters.me
+)
 async def evaluator(client: Client, message: Message):
     code = message.text.split(maxsplit=1)[1]
 
@@ -58,8 +60,8 @@ async def evaluator(client: Client, message: Message):
             "reply": message.reply_to_message,
             "client": client,
             "pyrogram": __import__("pyrogram"),
-            "filters": filters
-        }
+            "filters": filters,
+        },
     )
     text = (
         "<b>Code:</b>\n"
@@ -69,6 +71,5 @@ async def evaluator(client: Client, message: Message):
     )
     await message.edit(text)
 
-modules_help["eval"] = {
-    "eval": "eval python code"
-}
+
+modules_help["eval"] = {"eval": "eval python code"}

@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -68,8 +69,7 @@ class Conversation:
         if self._chat_id in self._locks:
             self._chat_unique_lock = self._locks[self._chat_id]
         else:
-            self._chat_unique_lock = self._locks[self._chat_id] = asyncio.Lock(
-            )
+            self._chat_unique_lock = self._locks[self._chat_id] = asyncio.Lock()
 
         if self.exclusive:
             await self._chat_unique_lock.acquire()

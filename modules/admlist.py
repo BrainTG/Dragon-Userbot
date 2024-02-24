@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -162,9 +163,11 @@ class Chat(Object):
 
         return Chat(
             id=peer_id,
-            type=enums.ChatType.SUPERGROUP
-            if getattr(channel, "megagroup", None)
-            else enums.ChatType.CHANNEL,
+            type=(
+                enums.ChatType.SUPERGROUP
+                if getattr(channel, "megagroup", None)
+                else enums.ChatType.CHANNEL
+            ),
             is_verified=getattr(channel, "verified", None),
             is_restricted=getattr(channel, "restricted", None),
             is_creator=getattr(channel, "creator", None),
@@ -188,8 +191,7 @@ class Chat(Object):
             members_count=getattr(channel, "participants_count", None),
             dc_id=getattr(getattr(channel, "photo", None), "dc_id", None),
             has_protected_content=getattr(channel, "noforwards", None),
-            is_admin=True if getattr(
-                channel, "admin_rights", False) else False,
+            is_admin=True if getattr(channel, "admin_rights", False) else False,
             client=client,
         )
 

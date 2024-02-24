@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -37,7 +38,9 @@ from utils.misc import (
 )
 
 
-@Client.on_message(filters.command(["support", "repo", "info"], prefix) & filters.me)
+@Client.on_message(
+    filters.command(["support", "repo", "info"], prefix) & filters.me
+)
 async def info(_, message: Message):
     devs = ["@john_ph0nk", "@fuccsoc2", "@BTG_UB(BrainTG)"]
     random.shuffle(devs)
@@ -67,9 +70,7 @@ async def info(_, message: Message):
 async def version(client: Client, message: Message):
     changelog = ""
     ub_version = ".".join(userbot_version.split(".")[:2])
-    async for m in client.search_messages(
-        "BTG_UB", query=ub_version + "."
-    ):
+    async for m in client.search_messages("BTG_UB", query=ub_version + "."):
         if ub_version in m.text:
             changelog = m.id
 

@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -72,14 +73,16 @@ async def main():
     except sqlite3.OperationalError as e:
         if str(e) == "database is locked" and os.name == "posix":
             logging.warning(
-                "Session file is locked. Trying to kill blocking process...")
+                "Session file is locked. Trying to kill blocking process..."
+            )
             subprocess.run(["fuser", "-k", "my_account.session"])
             restart()
 
         raise
     except (errors.NotAcceptable, errors.Unauthorized) as e:
         logging.error(
-            f"{e.__class__.__name__}: {e}\nMoving session file to my_account.session-old...")
+            f"{e.__class__.__name__}: {e}\nMoving session file to my_account.session-old..."
+        )
         os.rename("./my_account.session", "./my_account.session-old")
         restart()
 
@@ -88,7 +91,9 @@ async def main():
 
     for path in Path("modules").rglob("*.py"):
         try:
-            await load_module(path.stem, app, core="custom_modules" not in path.parent.parts)
+            await load_module(
+                path.stem, app, core="custom_modules" not in path.parent.parts
+            )
         except Exception:
             logging.warning(f"Can't import module {path.stem}", exc_info=True)
             failed_modules += 1
@@ -105,13 +110,22 @@ async def main():
             "update": "<b>Update process completed!</b>",
         }[info["type"]]
         try:
-            await app.edit_message_text(info["chat_id"], info["message_id"], text)
+            await app.edit_message_text(
+                info["chat_id"], info["message_id"], text
+            )
         except errors.RPCError:
             pass
         db.remove("core.updater", "restart_info")
 
     if db.get("core.sessionkiller", "enabled", False):
-        db.set("core.sessionkiller", "auths_hashes", [auth.hash for auth in await app.invoke(GetAuthorizations()).authorizations])
+        db.set(
+            "core.sessionkiller",
+            "auths_hashes",
+            [
+                auth.hash
+                for auth in await app.invoke(GetAuthorizations()).authorizations
+            ],
+        )
 
     logging.info("Dragon-Userbot started!")
 
@@ -119,10 +133,12 @@ async def main():
 
     await app.stop()
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Dragon Userbot")
-    parser.add_argument("--no-logo", action="store_true",
-                        help="Disable logo display")
+    parser.add_argument(
+        "--no-logo", action="store_true", help="Disable logo display"
+    )
     args = parser.parse_args()
 
     app.run(main())

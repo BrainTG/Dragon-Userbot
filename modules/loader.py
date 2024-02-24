@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -37,7 +38,7 @@ from utils.scripts import (
     format_small_module_help,
     load_module,
     unload_module,
-    url_valid
+    url_valid,
 )
 from utils.misc import modules_help, prefix
 from utils.config import modules_repo_branch
@@ -45,7 +46,9 @@ from utils.config import modules_repo_branch
 BASE_PATH = os.path.abspath(os.getcwd())
 
 
-@Client.on_message(filters.command(["sendmod", "sm", "ml"], prefix) & filters.me)
+@Client.on_message(
+    filters.command(["sendmod", "sm", "ml"], prefix) & filters.me
+)
 async def sendmod(client: Client, message: Message):
     if len(message.command) == 1:
         return await message.edit("<b>Module name to send is not provided</b>")
@@ -86,7 +89,7 @@ async def loadmod(client: Client, message: Message):
     module_name = message.command[1].lower()
     if url_valid(module_name):
         link = module_name
-        module_name = os.path.basename(link).split('.')[0]
+        module_name = os.path.basename(link).split(".")[0]
     else:
         link = (
             "https://raw.githubusercontent.com/Dragon-Userbot"
@@ -230,5 +233,5 @@ modules_help["loader"] = {
     "unloadmod [module_name]*": "Delete module",
     "loadallmods": "Load all custom modules (use it at your own risk)",
     "updateallmods": "Update all loaded custom modules",
-    "sendmod [module_name]": "Send module to interlocutor"
+    "sendmod [module_name]": "Send module to interlocutor",
 }

@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -86,9 +87,9 @@ async def sessions_list(client: Client, message: Message):
                 official="✅" if session.official_app else "❌️",
                 password_pending="❌️️" if session.password_pending else "✅",
                 calls="❌️️" if session.call_requests_disabled else "✅",
-                secret_chats="❌️️"
-                if session.encrypted_requests_disabled
-                else "✅",
+                secret_chats=(
+                    "❌️️" if session.encrypted_requests_disabled else "✅"
+                ),
             )
         )
     answer = "<b>Active sessions at your account:</b>\n\n"

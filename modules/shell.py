@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 #  Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -69,6 +70,5 @@ async def shell(_, message: Message):
     await message.edit(text)
     cmd_obj.kill()
 
-modules_help["shell"] = {
-    "sh [command]*": "Execute command in shell"
-}
+
+modules_help["shell"] = {"sh [command]*": "Execute command in shell"}

@@ -8,6 +8,7 @@
  `-------'                     `---' `-------'
                                               
 """
+
 # Dragon-Userbot - telegram userbot
 #  Copyright (C) 2020-present Dragon Userbot Organization
 #
@@ -69,5 +70,5 @@ except git.exc.InvalidGitRepositoryError:
     repo.heads.master.checkout(True)
     gitrepo = git.Repo(".")
 
-commit_count = len(list(gitrepo.iter_commits('HEAD')))
+commit_count = len(list(gitrepo.iter_commits("HEAD")))
 userbot_version = f"4.2.{commit_count}-BrainTG"
