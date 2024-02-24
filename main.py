@@ -59,10 +59,11 @@ app = Client(
     parse_mode=ParseMode.HTML,
 )
 
+
 async def main():
     if not args.no_logo:
         print(logo)
-    
+
     logging.basicConfig(level=logging.INFO)
     DeleteAccount.__new__ = None
 
@@ -70,13 +71,15 @@ async def main():
         await app.start()
     except sqlite3.OperationalError as e:
         if str(e) == "database is locked" and os.name == "posix":
-            logging.warning("Session file is locked. Trying to kill blocking process...")
+            logging.warning(
+                "Session file is locked. Trying to kill blocking process...")
             subprocess.run(["fuser", "-k", "my_account.session"])
             restart()
-        
+
         raise
     except (errors.NotAcceptable, errors.Unauthorized) as e:
-        logging.error(f"{e.__class__.__name__}: {e}\nMoving session file to my_account.session-old...")
+        logging.error(
+            f"{e.__class__.__name__}: {e}\nMoving session file to my_account.session-old...")
         os.rename("./my_account.session", "./my_account.session-old")
         restart()
 
@@ -118,7 +121,8 @@ async def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Dragon Userbot")
-    parser.add_argument("--no-logo", action="store_true", help="Disable logo display")
+    parser.add_argument("--no-logo", action="store_true",
+                        help="Disable logo display")
     args = parser.parse_args()
-    
+
     app.run(main())

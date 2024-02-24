@@ -717,25 +717,25 @@ async def mute_command(client: Client, message: Message):
             if match:
                 if character == "m":
                     mute_seconds += int(
-                        float(match.string[match.start() : match.end() - 1])
+                        float(match.string[match.start(): match.end() - 1])
                         * 60
                         // 1
                     )
                 if character == "h":
                     mute_seconds += int(
-                        float(match.string[match.start() : match.end() - 1])
+                        float(match.string[match.start(): match.end() - 1])
                         * 3600
                         // 1
                     )
                 if character == "d":
                     mute_seconds += int(
-                        float(match.string[match.start() : match.end() - 1])
+                        float(match.string[match.start(): match.end() - 1])
                         * 86400
                         // 1
                     )
                 if character == "w":
                     mute_seconds += int(
-                        float(match.string[match.start() : match.end() - 1])
+                        float(match.string[match.start(): match.end() - 1])
                         * 604800
                         // 1
                     )
@@ -796,7 +796,7 @@ async def mute_command(client: Client, message: Message):
                             mute_seconds += int(
                                 float(
                                     match.string[
-                                        match.start() : match.end() - 1
+                                        match.start(): match.end() - 1
                                     ]
                                 )
                                 * 60
@@ -806,7 +806,7 @@ async def mute_command(client: Client, message: Message):
                             mute_seconds += int(
                                 float(
                                     match.string[
-                                        match.start() : match.end() - 1
+                                        match.start(): match.end() - 1
                                     ]
                                 )
                                 * 3600
@@ -816,7 +816,7 @@ async def mute_command(client: Client, message: Message):
                             mute_seconds += int(
                                 float(
                                     match.string[
-                                        match.start() : match.end() - 1
+                                        match.start(): match.end() - 1
                                     ]
                                 )
                                 * 86400
@@ -826,7 +826,7 @@ async def mute_command(client: Client, message: Message):
                             mute_seconds += int(
                                 float(
                                     match.string[
-                                        match.start() : match.end() - 1
+                                        match.start(): match.end() - 1
                                     ]
                                 )
                                 * 604800
@@ -1068,7 +1068,8 @@ async def anti_channels(client: Client, message: Message):
         db.set("core.ats", f"antich{message.chat.id}", True)
         group = await client.get_chat(message.chat.id)
         if group.linked_chat:
-            db.set("core.ats", f"linked{message.chat.id}", group.linked_chat.id)
+            db.set(
+                "core.ats", f"linked{message.chat.id}", group.linked_chat.id)
         else:
             db.set("core.ats", f"linked{message.chat.id}", 0)
         await message.edit("<b>Blocking channels in this chat enabled.</b>")
@@ -1280,7 +1281,8 @@ async def antiraid(client: Client, message: Message):
         db.set("core.ats", f"antiraid{message.chat.id}", True)
         group = await client.get_chat(message.chat.id)
         if group.linked_chat:
-            db.set("core.ats", f"linked{message.chat.id}", group.linked_chat.id)
+            db.set(
+                "core.ats", f"linked{message.chat.id}", group.linked_chat.id)
         else:
             db.set("core.ats", f"linked{message.chat.id}", 0)
         await message.edit(

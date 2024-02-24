@@ -38,7 +38,7 @@ from utils.misc import modules_help, prefix
 async def shell(_, message: Message):
     if len(message.command) < 2:
         return await message.edit("<b>Specify the command in message text</b>")
-        
+
     cmd_text = message.text.split(maxsplit=1)[1]
     cmd_obj = Popen(
         cmd_text,
@@ -52,7 +52,7 @@ async def shell(_, message: Message):
     text = f"<b>{char}</b> <code>{cmd_text}</code>\n\n"
 
     await message.edit(text + "<b>Running...</b>")
-    
+
     try:
         start_time = perf_counter()
         stdout, stderr = cmd_obj.communicate(timeout=60)
@@ -65,7 +65,7 @@ async def shell(_, message: Message):
         if stderr:
             text += f"<b>Error:</b>\n<pre language=python>{stderr}</pre>\n\n"
         text += f"<b>Completed in {round(stop_time - start_time, 5)} seconds with code {cmd_obj.returncode}</b>"
-        
+
     await message.edit(text)
     cmd_obj.kill()
 

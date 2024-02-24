@@ -44,11 +44,12 @@ from utils.config import modules_repo_branch
 
 BASE_PATH = os.path.abspath(os.getcwd())
 
+
 @Client.on_message(filters.command(["sendmod", "sm", "ml"], prefix) & filters.me)
 async def sendmod(client: Client, message: Message):
     if len(message.command) == 1:
         return await message.edit("<b>Module name to send is not provided</b>")
-    
+
     await message.edit("<b>Dispatching...</b>")
     try:
         module_name = message.command[1].lower()
@@ -75,7 +76,6 @@ async def sendmod(client: Client, message: Message):
         await message.edit(format_exc(e))
 
 
-
 @Client.on_message(filters.command(["loadmod", "lm"], prefix) & filters.me)
 async def loadmod(client: Client, message: Message):
 
@@ -99,8 +99,6 @@ async def loadmod(client: Client, message: Message):
             f"<b>Module <code>{module_name}</code> is not found or host down</b>"
         )
         return
-    
-
 
     if not os.path.exists(f"{BASE_PATH}/modules/custom_modules"):
         os.mkdir(f"{BASE_PATH}/modules/custom_modules")

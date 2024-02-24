@@ -261,7 +261,7 @@ async def render_message(app: Client, message: types.Message) -> dict:
             sub = '<meta property="og:image" content='
             index = t_me_page.find(sub)
             if index != -1:
-                link = t_me_page[index + 35 :].split('"')
+                link = t_me_page[index + 35:].split('"')
                 if (
                     len(link) > 0
                     and link[0]

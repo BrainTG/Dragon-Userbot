@@ -73,7 +73,8 @@ async def filters_main_handler(client: Client, message: Message):
                         )
                     else:
                         media_grouped_list.append(
-                            InputMediaVideo(_.video.file_id, _.caption.markdown)
+                            InputMediaVideo(_.video.file_id,
+                                            _.caption.markdown)
                         )
                 elif _.video.thumbs:
                     media_grouped_list.append(
